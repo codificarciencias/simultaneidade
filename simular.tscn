@@ -1,0 +1,494 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://images/Trilho.png" type="Texture" id=1]
+[ext_resource path="res://images/Trem.png" type="Texture" id=2]
+[ext_resource path="res://images/Estacao.png" type="Texture" id=3]
+[ext_resource path="res://simular.gd" type="Script" id=4]
+[ext_resource path="res://images/btn08on.png" type="Texture" id=5]
+[ext_resource path="res://images/btn05on.png" type="Texture" id=6]
+[ext_resource path="res://images/btn08.png" type="Texture" id=7]
+[ext_resource path="res://images/Btn02press.png" type="Texture" id=8]
+[ext_resource path="res://images/Btn02.png" type="Texture" id=9]
+[ext_resource path="res://images/Btn01.png" type="Texture" id=10]
+[ext_resource path="res://images/btn01press.png" type="Texture" id=11]
+[ext_resource path="res://images/Btn01on.png" type="Texture" id=12]
+[ext_resource path="res://images/Btn02on.png" type="Texture" id=13]
+[ext_resource path="res://images/painel.png" type="Texture" id=14]
+[ext_resource path="res://images/btn05.png" type="Texture" id=15]
+[ext_resource path="res://images/Btn03.png" type="Texture" id=16]
+[ext_resource path="res://images/Btn03press.png" type="Texture" id=17]
+[ext_resource path="res://images/Btn03on.png" type="Texture" id=18]
+[ext_resource path="res://images/btn08press.png" type="Texture" id=19]
+[ext_resource path="res://images/btn05press.png" type="Texture" id=20]
+[ext_resource path="res://images/btn04on.png" type="Texture" id=21]
+[ext_resource path="res://images/btn04.png" type="Texture" id=22]
+[ext_resource path="res://images/btn04press.png" type="Texture" id=23]
+[ext_resource path="res://images/btn06on.png" type="Texture" id=24]
+[ext_resource path="res://images/btn06.png" type="Texture" id=25]
+[ext_resource path="res://images/btn06press.png" type="Texture" id=26]
+[ext_resource path="res://images/btn09.png" type="Texture" id=27]
+[ext_resource path="res://images/btn09on.png" type="Texture" id=28]
+[ext_resource path="res://images/Btn09press.png" type="Texture" id=29]
+[ext_resource path="res://images/btn10press.png" type="Texture" id=30]
+[ext_resource path="res://images/btn10on.png" type="Texture" id=31]
+[ext_resource path="res://images/btn10.png" type="Texture" id=32]
+[ext_resource path="res://images/lamp.png" type="Texture" id=33]
+[ext_resource path="res://images/lampV.png" type="Texture" id=34]
+[ext_resource path="res://images/lampA.png" type="Texture" id=35]
+[ext_resource path="res://images/marcaI.png" type="Texture" id=36]
+[ext_resource path="res://sons/vermelho.wav" type="AudioStream" id=37]
+[ext_resource path="res://sons/azul.wav" type="AudioStream" id=38]
+[ext_resource path="res://images/CimaBaixo.png" type="Texture" id=39]
+[ext_resource path="res://images/Som.png" type="Texture" id=40]
+[ext_resource path="res://images/ceu.png" type="Texture" id=41]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="simular" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Fundo" type="ParallaxBackground" parent="."]
+
+[node name="Estrelas" type="ParallaxLayer" parent="Fundo"]
+motion_mirroring = Vector2( 320, 320 )
+
+[node name="SpEstrelas" type="Sprite" parent="Fundo/Estrelas"]
+position = Vector2( 1.92389, 0 )
+scale = Vector2( 1.29451, 1.29451 )
+texture = ExtResource( 41 )
+centered = false
+region_filter_clip = true
+
+[node name="Estrelas2" type="ParallaxLayer" parent="Fundo"]
+motion_mirroring = Vector2( 320, 320 )
+
+[node name="SpEstrelas" type="Sprite" parent="Fundo/Estrelas2"]
+position = Vector2( 640.001, -0.561768 )
+scale = Vector2( 1.28049, 1.28049 )
+texture = ExtResource( 41 )
+centered = false
+region_filter_clip = true
+
+[node name="Trilho" type="ParallaxLayer" parent="Fundo"]
+
+[node name="SpTrilhos" type="Sprite" parent="Fundo/Trilho"]
+position = Vector2( 0, 197.895 )
+scale = Vector2( 1.81483, 1.82084 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Trem" type="Sprite" parent="."]
+position = Vector2( 651, 260.651 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="posVerm" type="Position2D" parent="Trem"]
+position = Vector2( 414, 85 )
+
+[node name="lampV" type="Sprite" parent="Trem"]
+visible = false
+position = Vector2( 413.658, 78.6284 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 34 )
+
+[node name="posAzul" type="Position2D" parent="Trem"]
+position = Vector2( -449, 85 )
+
+[node name="lampA" type="Sprite" parent="Trem"]
+visible = false
+position = Vector2( -448.334, 78.981 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 35 )
+
+[node name="posCentro" type="Position2D" parent="Trem"]
+position = Vector2( -17.1121, -0.590057 )
+
+[node name="kinTrem" type="Area2D" parent="Trem"]
+
+[node name="ColTrem" type="CollisionShape2D" parent="Trem/kinTrem"]
+position = Vector2( -17.2227, -1.9136 )
+shape = SubResource( 1 )
+
+[node name="Estacao" type="Sprite" parent="."]
+position = Vector2( 640.988, 377.413 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="EstaLampA" type="Sprite" parent="Estacao"]
+position = Vector2( -432.735, -72.4392 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 35 )
+
+[node name="PosA" type="Position2D" parent="Estacao"]
+position = Vector2( -432.313, -78.719 )
+
+[node name="EstaLampV" type="Sprite" parent="Estacao"]
+position = Vector2( 431.211, -71.4331 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 34 )
+
+[node name="PosV" type="Position2D" parent="Estacao"]
+position = Vector2( 430.687, -78.719 )
+
+[node name="kinEstacao" type="Area2D" parent="Estacao"]
+
+[node name="ColEstacao" type="CollisionShape2D" parent="Estacao/kinEstacao"]
+position = Vector2( 0, 4.94617 )
+shape = SubResource( 2 )
+
+[node name="Controle" type="Node" parent="."]
+
+[node name="PanControle" type="Sprite" parent="Controle"]
+position = Vector2( 639.627, 624 )
+scale = Vector2( 1.27493, 1.31071 )
+texture = ExtResource( 14 )
+
+[node name="PanVTrem" type="Sprite" parent="Controle"]
+position = Vector2( 641.221, 138.041 )
+scale = Vector2( 0.226363, 0.720035 )
+texture = ExtResource( 14 )
+
+[node name="VelTrem" type="SpinBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.0
+margin_top = -236.0
+margin_right = 26.0
+margin_bottom = -200.0
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Define a velocidade
+do Trem"
+custom_icons/updown = ExtResource( 39 )
+min_value = 1.0
+value = 30.0
+align = 1
+suffix = "% C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Controle/VelTrem"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -63.498
+margin_top = -16.478
+margin_right = 63.502
+margin_bottom = -2.47804
+text = "Velocidade do Trem"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btLenta" type="TextureButton" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -31.9999
+margin_top = -168.0
+margin_right = 32.0001
+margin_bottom = -104.0
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btCentro" type="TextureButton" parent="Controle/btLenta"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0001
+margin_top = 16.0
+margin_right = 31.9999
+margin_bottom = 80.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btEsq" type="TextureButton" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -88.0
+margin_right = -96.0
+margin_bottom = -24.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btDir" type="TextureButton" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = -88.0
+margin_right = 160.0
+margin_bottom = -24.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btPlay" type="TextureButton" parent="Controle"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -168.0
+margin_right = -63.9999
+margin_bottom = -104.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btLuz" type="TextureButton" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = -168.0
+margin_right = 128.0
+margin_bottom = -104.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btTela" type="TextureButton" parent="Controle"]
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1207.09
+margin_top = -352.935
+margin_right = 631.091
+margin_bottom = -288.935
+hint_tooltip = "Alternar o modo tela cheia"
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btPause" type="TextureButton" parent="Controle"]
+pause_mode = 2
+visible = false
+margin_left = 512.0
+margin_top = 552.0
+margin_right = 576.0
+margin_bottom = 616.0
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btFechar" type="TextureButton" parent="Controle"]
+pause_mode = 2
+margin_left = 17.0
+margin_top = 14.0
+margin_right = 106.0
+margin_bottom = 64.0
+hint_tooltip = "Site do projeto"
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Marcar" type="CheckBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -368.0
+margin_top = -160.0
+margin_right = -239.0
+margin_bottom = -136.0
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Marca o local onde a luz
+foi emitida"
+text = "Marcar emissão"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="marcaI" type="Sprite" parent="Controle/Marcar"]
+position = Vector2( -14.8465, 12.8174 )
+scale = Vector2( 0.391511, 0.391511 )
+texture = ExtResource( 36 )
+
+[node name="SoundLogo" type="Sprite" parent="Controle"]
+position = Vector2( 261.872, 662.467 )
+scale = Vector2( 1.0479, 1.0479 )
+texture = ExtResource( 40 )
+
+[node name="SonEstacao" type="CheckBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -348.935
+margin_top = -55.9999
+margin_right = -272.935
+margin_bottom = -31.9999
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Observador da Estação
+emite som ao ver a luz"
+focus_mode = 0
+text = "Estação"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SonTrem" type="CheckBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -348.935
+margin_top = -95.9999
+margin_right = -287.935
+margin_bottom = -71.9999
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Observador do Trem 
+emite som ao ver a luz"
+focus_mode = 0
+text = "Trem"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmisEStacao" type="CheckBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_top = -56.0001
+margin_right = -496.0
+margin_bottom = -32.0001
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Instala os emissores
+na Estação"
+focus_mode = 0
+pressed = true
+text = "Estação"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lamp" type="Sprite" parent="Controle/EmisEStacao"]
+position = Vector2( -16.0576, -0.299988 )
+scale = Vector2( 0.65779, 0.657291 )
+texture = ExtResource( 33 )
+
+[node name="EmisTrem" type="CheckBox" parent="Controle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_top = -88.0
+margin_right = -496.0
+margin_bottom = -64.0
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Instala os emissores
+no Trem"
+focus_mode = 0
+text = "Trem"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LuzAutomatca" type="CheckBox" parent="Controle"]
+margin_left = 64.0
+margin_top = 560.0
+margin_right = 165.0
+margin_bottom = 584.0
+rect_scale = Vector2( 1.5, 1.5 )
+hint_tooltip = "Ativa o disparo de luz
+quando o Trem alinhar com a Estação"
+focus_mode = 0
+pressed = true
+text = "Automática"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn01press" type="Sprite" parent="Controle/LuzAutomatca"]
+position = Vector2( -15.0062, 12.4059 )
+scale = Vector2( 0.523407, 0.479463 )
+texture = ExtResource( 11 )
+
+[node name="PanTitulo" type="Sprite" parent="Controle"]
+position = Vector2( 641.358, 39.3364 )
+scale = Vector2( 1.27504, 0.520882 )
+z_index = -2
+texture = ExtResource( 14 )
+
+[node name="LbTitulo" type="Label" parent="Controle/PanTitulo"]
+anchor_right = 1.0
+margin_left = -502.294
+margin_top = -31.9993
+margin_right = -1006.29
+margin_bottom = -17.9993
+rect_scale = Vector2( 2, 4 )
+text = "EXPERIMENTO DA SIMULTANEIDADE"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VermFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+
+[node name="AzulFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+[connection signal="area_entered" from="Trem/kinTrem" to="." method="_on_kinTrem_area_entered"]
+[connection signal="area_entered" from="Estacao/kinEstacao" to="." method="_on_kinEstacao_area_entered"]
+[connection signal="button_down" from="Controle/btLenta" to="." method="_on_btLenta_button_down"]
+[connection signal="button_up" from="Controle/btLenta" to="." method="_on_btLenta_button_up"]
+[connection signal="pressed" from="Controle/btLenta/btCentro" to="." method="_on_btCentro_pressed"]
+[connection signal="pressed" from="Controle/btEsq" to="." method="_on_btEsq_pressed"]
+[connection signal="pressed" from="Controle/btDir" to="." method="_on_btDir_pressed"]
+[connection signal="pressed" from="Controle/btPlay" to="." method="_on_btPlay_pressed"]
+[connection signal="pressed" from="Controle/btLuz" to="." method="_on_btLuz_pressed"]
+[connection signal="pressed" from="Controle/btTela" to="." method="_on_btTela_pressed"]
+[connection signal="pressed" from="Controle/btPause" to="." method="_on_btPause_pressed"]
+[connection signal="pressed" from="Controle/btFechar" to="." method="_on_btFechar_pressed"]
+[connection signal="pressed" from="Controle/EmisEStacao" to="." method="_on_EmisEStacao_pressed"]
+[connection signal="pressed" from="Controle/EmisTrem" to="." method="_on_EmisTrem_pressed"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+#-----------------Script da Luz Azul--------------
+
 var marcar = true
 
 func _ready():

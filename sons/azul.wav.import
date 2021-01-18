@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/azul.wav-5afcb35b3b0cb4f1983c5a0d9b4cba14.sample"
+
+[deps]
+
+source_file="res://sons/azul.wav"
+dest_files=[ "res://.import/azul.wav-5afcb35b3b0cb4f1983c5a0d9b4cba14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

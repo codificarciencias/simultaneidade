@@ -441,7 +441,6 @@ texture = ExtResource( 11 )
 [node name="PanTitulo" type="Sprite" parent="Controle"]
 position = Vector2( 641.358, 39.3364 )
 scale = Vector2( 1.27504, 0.520882 )
-z_index = -2
 texture = ExtResource( 14 )
 
 [node name="LbTitulo" type="Label" parent="Controle/PanTitulo"]

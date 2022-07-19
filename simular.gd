@@ -16,6 +16,12 @@ func _ready():
 
 func _process(delta):
 	
+	# Exibe data e hora
+	$Controle/LbData.text = str('Data: ', '%02d'% OS.get_date()['day'], '-', 
+	'%02d'% OS.get_date()['month'],'-', OS.get_date()['year'], 
+	' Hora: ', '%02d'% OS.get_time()['hour'],' : ', '%02d'% OS.get_time()['minute'],' : ', 
+	'%02d'% OS.get_time()['second'])
+	
 	if mover == true: # mover o trem 
 		$Trem.translate(Vector2(velocid, 0) * delta)
 	else: # controla o botão play e pause
@@ -95,7 +101,7 @@ func _on_btPause_pressed(): # pausa a simulação
 
 
 func _on_btFechar_pressed() -> void: # Encerra o aplicativo
-	OS.shell_open("https://codificarciencias.github.io")
+	#OS.shell_open("https://codificarciencias.github.io")
 	get_tree().quit()
 
 
@@ -166,3 +172,12 @@ func _on_btTela_pressed(): # Modo tela cheia
 		OS.window_fullscreen = false
 	else:
 		OS.window_fullscreen = true
+
+
+func _on_Wsite_pressed(): # Link para o site
+	OS.shell_open("https://codificarciencias.github.io")
+
+
+func _on_btReset_pressed(): # Reinicia a simulação
+	get_tree().paused = false
+	get_tree().reload_current_scene()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://images/Trilho.jpg" type="Texture" id=1]
 [ext_resource path="res://images/Trem.png" type="Texture" id=2]
@@ -41,10 +41,30 @@
 [ext_resource path="res://images/CimaBaixo.png" type="Texture" id=39]
 [ext_resource path="res://images/Som.png" type="Texture" id=40]
 [ext_resource path="res://images/ceu.png" type="Texture" id=41]
+[ext_resource path="res://images/btnFecharOn.png" type="Texture" id=42]
+[ext_resource path="res://images/btnFechar.png" type="Texture" id=43]
+[ext_resource path="res://images/btnResetOn.png" type="Texture" id=44]
+[ext_resource path="res://images/btnReset.png" type="Texture" id=45]
+[ext_resource path="res://conthrax-sb.ttf" type="DynamicFontData" id=46]
+[ext_resource path="res://arial.tres" type="DynamicFont" id=47]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+size = 29
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 46 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 29
+outline_size = 1
+outline_color = Color( 0.0666667, 0, 0.666667, 1 )
+use_filter = true
+font_data = ExtResource( 46 )
 
 [node name="simular" type="Node2D"]
 script = ExtResource( 4 )
@@ -137,6 +157,11 @@ position = Vector2( 641.221, 138.041 )
 scale = Vector2( 0.226363, 0.720035 )
 texture = ExtResource( 14 )
 
+[node name="PanTitulo" type="Sprite" parent="Controle"]
+position = Vector2( 641.358, 39.3364 )
+scale = Vector2( 1.27504, 0.520882 )
+texture = ExtResource( 14 )
+
 [node name="VelTrem" type="SpinBox" parent="Controle"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -161,10 +186,11 @@ __meta__ = {
 [node name="Label" type="Label" parent="Controle/VelTrem"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -63.498
-margin_top = -16.478
-margin_right = 63.502
-margin_bottom = -2.47804
+margin_left = -70.1647
+margin_top = -19.8113
+margin_right = 68.8353
+margin_bottom = -1.81133
+custom_fonts/font = ExtResource( 47 )
 text = "Velocidade do Trem"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -268,21 +294,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Wsite" type="TextureButton" parent="Controle"]
+pause_mode = 2
+margin_left = 18.0
+margin_top = 14.0
+margin_right = 107.0
+margin_bottom = 64.0
+hint_tooltip = "website"
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 28 )
+
+[node name="btFechar" type="TextureButton" parent="Controle"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -73.0
+margin_top = 7.0
+margin_right = -9.0
+margin_bottom = 71.0
+hint_tooltip = "Fechar"
+texture_normal = ExtResource( 43 )
+texture_hover = ExtResource( 42 )
+
 [node name="btTela" type="TextureButton" parent="Controle"]
+pause_mode = 2
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1207.09
+margin_left = 1130.09
 margin_top = -352.935
-margin_right = 631.091
+margin_right = 554.091
 margin_bottom = -288.935
-hint_tooltip = "Alternar o modo tela cheia"
+hint_tooltip = "Tela cheia"
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="btReset" type="TextureButton" parent="Controle"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -227.0
+margin_top = 7.0
+margin_right = -163.0
+margin_bottom = 71.0
+hint_tooltip = "Reiniciar"
+texture_normal = ExtResource( 45 )
+texture_hover = ExtResource( 44 )
 
 [node name="btPause" type="TextureButton" parent="Controle"]
 pause_mode = 2
@@ -298,36 +357,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btFechar" type="TextureButton" parent="Controle"]
-pause_mode = 2
-margin_left = 17.0
-margin_top = 14.0
-margin_right = 106.0
-margin_bottom = 64.0
-hint_tooltip = "Site do projeto"
-texture_normal = ExtResource( 27 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Marcar" type="CheckBox" parent="Controle"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -368.0
+margin_left = -367.0
 margin_top = -160.0
-margin_right = -239.0
-margin_bottom = -136.0
+margin_right = -218.0
+margin_bottom = -134.0
 rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Marca o local onde a luz
 foi emitida"
-text = "Marcar emissão"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "Local da emissão"
 
 [node name="marcaI" type="Sprite" parent="Controle/Marcar"]
 position = Vector2( -14.8465, 12.8174 )
@@ -352,6 +398,9 @@ rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Observador da Estação
 emite som ao ver a luz"
 focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
 text = "Estação"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -370,6 +419,9 @@ rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Observador do Trem 
 emite som ao ver a luz"
 focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
 text = "Trem"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -388,6 +440,9 @@ rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Instala os emissores
 na Estação"
 focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
 pressed = true
 text = "Estação"
 __meta__ = {
@@ -412,6 +467,9 @@ rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Instala os emissores
 no Trem"
 focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
 text = "Trem"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -426,36 +484,48 @@ rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Ativa o disparo de luz
 quando o Trem alinhar com a Estação"
 focus_mode = 0
+custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
+custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
+custom_fonts/font = ExtResource( 47 )
 pressed = true
 text = "Automática"
 expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="btn01press" type="Sprite" parent="Controle/LuzAutomatca"]
 position = Vector2( -15.0062, 12.4059 )
 scale = Vector2( 0.523407, 0.479463 )
 texture = ExtResource( 11 )
 
-[node name="PanTitulo" type="Sprite" parent="Controle"]
-position = Vector2( 641.358, 39.3364 )
-scale = Vector2( 1.27504, 0.520882 )
-texture = ExtResource( 14 )
-
-[node name="LbTitulo" type="Label" parent="Controle/PanTitulo"]
+[node name="LbData" type="Label" parent="Controle"]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -502.294
-margin_top = -31.9993
-margin_right = -1006.29
-margin_bottom = -17.9993
-rect_scale = Vector2( 2, 4 )
+anchor_bottom = 1.0
+margin_left = -383.0
+margin_top = -147.0
+margin_right = -33.0
+margin_bottom = -35.0
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 20
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 4 )
+text = "DATA: 00-00-0000
+HORA: 00 : 00 : 00"
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="LbTitulo" type="Label" parent="Controle"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -341.5
+margin_top = 22.0
+margin_right = 341.5
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 3 )
 text = "EXPERIMENTO DA SIMULTANEIDADE"
 align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+valign = 1
 
 [node name="VermFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 37 )
@@ -472,8 +542,10 @@ stream = ExtResource( 38 )
 [connection signal="pressed" from="Controle/btDir" to="." method="_on_btDir_pressed"]
 [connection signal="pressed" from="Controle/btPlay" to="." method="_on_btPlay_pressed"]
 [connection signal="pressed" from="Controle/btLuz" to="." method="_on_btLuz_pressed"]
-[connection signal="pressed" from="Controle/btTela" to="." method="_on_btTela_pressed"]
-[connection signal="pressed" from="Controle/btPause" to="." method="_on_btPause_pressed"]
+[connection signal="pressed" from="Controle/Wsite" to="." method="_on_Wsite_pressed"]
 [connection signal="pressed" from="Controle/btFechar" to="." method="_on_btFechar_pressed"]
+[connection signal="pressed" from="Controle/btTela" to="." method="_on_btTela_pressed"]
+[connection signal="pressed" from="Controle/btReset" to="." method="_on_btReset_pressed"]
+[connection signal="pressed" from="Controle/btPause" to="." method="_on_btPause_pressed"]
 [connection signal="pressed" from="Controle/EmisEStacao" to="." method="_on_EmisEStacao_pressed"]
 [connection signal="pressed" from="Controle/EmisTrem" to="." method="_on_EmisTrem_pressed"]

@@ -101,7 +101,6 @@ func _on_btPause_pressed(): # pausa a simulação
 
 
 func _on_btFechar_pressed() -> void: # Encerra o aplicativo
-	#OS.shell_open("https://codificarciencias.github.io")
 	get_tree().quit()
 
 

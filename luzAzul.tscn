@@ -2,7 +2,7 @@
 
 [ext_resource path="res://images/marcaA.png" type="Texture" id=1]
 [ext_resource path="res://luzAzul.gd" type="Script" id=2]
-[ext_resource path="res://sons/m2mobi__click.wav" type="AudioStream" id=3]
+[ext_resource path="res://sons/click.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1.0
@@ -31,9 +31,6 @@ color = Color( 0, 0.227451, 1, 1 )
 
 [node name="luzFx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -30.0
-pitch_scale = 2.1
-mix_target = 2
 
 [node name="ColAzul" type="Area2D" parent="."]
 

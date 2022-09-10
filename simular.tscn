@@ -1,12 +1,12 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://images/Trilho.jpg" type="Texture" id=1]
 [ext_resource path="res://images/Trem.png" type="Texture" id=2]
 [ext_resource path="res://images/Estacao.png" type="Texture" id=3]
 [ext_resource path="res://simular.gd" type="Script" id=4]
-[ext_resource path="res://images/btn08on.png" type="Texture" id=5]
+[ext_resource path="res://images/luzico.png" type="Texture" id=5]
 [ext_resource path="res://images/btn05on.png" type="Texture" id=6]
-[ext_resource path="res://images/btn08.png" type="Texture" id=7]
+[ext_resource path="res://LbIniciar.gd" type="Script" id=7]
 [ext_resource path="res://images/Btn02press.png" type="Texture" id=8]
 [ext_resource path="res://images/Btn02.png" type="Texture" id=9]
 [ext_resource path="res://images/Btn01.png" type="Texture" id=10]
@@ -18,7 +18,7 @@
 [ext_resource path="res://images/Btn03.png" type="Texture" id=16]
 [ext_resource path="res://images/Btn03press.png" type="Texture" id=17]
 [ext_resource path="res://images/Btn03on.png" type="Texture" id=18]
-[ext_resource path="res://images/btn08press.png" type="Texture" id=19]
+[ext_resource path="res://sons/iniciar.mp3" type="AudioStream" id=19]
 [ext_resource path="res://images/btn05press.png" type="Texture" id=20]
 [ext_resource path="res://images/btn04on.png" type="Texture" id=21]
 [ext_resource path="res://images/btn04.png" type="Texture" id=22]
@@ -36,8 +36,8 @@
 [ext_resource path="res://images/lampV.png" type="Texture" id=34]
 [ext_resource path="res://images/lampA.png" type="Texture" id=35]
 [ext_resource path="res://images/marcaI.png" type="Texture" id=36]
-[ext_resource path="res://sons/vermelho.wav" type="AudioStream" id=37]
-[ext_resource path="res://sons/azul.wav" type="AudioStream" id=38]
+[ext_resource path="res://sons/vermelho.mp3" type="AudioStream" id=37]
+[ext_resource path="res://sons/azul.mp3" type="AudioStream" id=38]
 [ext_resource path="res://images/CimaBaixo.png" type="Texture" id=39]
 [ext_resource path="res://images/Som.png" type="Texture" id=40]
 [ext_resource path="res://images/ceu.png" type="Texture" id=41]
@@ -47,6 +47,7 @@
 [ext_resource path="res://images/btnReset.png" type="Texture" id=45]
 [ext_resource path="res://conthrax-sb.ttf" type="DynamicFontData" id=46]
 [ext_resource path="res://arial.tres" type="DynamicFont" id=47]
+[ext_resource path="res://riscador/Riscar.tscn" type="PackedScene" id=48]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -64,6 +65,14 @@ size = 29
 outline_size = 1
 outline_color = Color( 0.0666667, 0, 0.666667, 1 )
 use_filter = true
+font_data = ExtResource( 46 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 100
+outline_size = 5
+outline_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+use_filter = true
+extra_spacing_char = 17
 font_data = ExtResource( 46 )
 
 [node name="simular" type="Node2D"]
@@ -95,7 +104,6 @@ position = Vector2( 414, 85 )
 [node name="lampV" type="Sprite" parent="Trem"]
 visible = false
 position = Vector2( 413.658, 78.6284 )
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 34 )
 
 [node name="posAzul" type="Position2D" parent="Trem"]
@@ -104,7 +112,6 @@ position = Vector2( -449, 85 )
 [node name="lampA" type="Sprite" parent="Trem"]
 visible = false
 position = Vector2( -448.334, 78.981 )
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 35 )
 
 [node name="posCentro" type="Position2D" parent="Trem"]
@@ -124,7 +131,6 @@ texture = ExtResource( 3 )
 [node name="EstaLampA" type="Sprite" parent="Estacao"]
 position = Vector2( -432.735, -72.4392 )
 rotation = 3.14159
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 35 )
 
 [node name="PosA" type="Position2D" parent="Estacao"]
@@ -133,7 +139,6 @@ position = Vector2( -432.313, -78.719 )
 [node name="EstaLampV" type="Sprite" parent="Estacao"]
 position = Vector2( 431.211, -71.4331 )
 rotation = 3.14159
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 34 )
 
 [node name="PosV" type="Position2D" parent="Estacao"]
@@ -237,12 +242,10 @@ margin_left = -160.0
 margin_top = -88.0
 margin_right = -96.0
 margin_bottom = -24.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
+flip_h = true
 
 [node name="btDir" type="TextureButton" parent="Controle"]
 anchor_left = 0.5
@@ -362,9 +365,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -367.0
+margin_left = -363.0
 margin_top = -160.0
-margin_right = -218.0
+margin_right = -214.0
 margin_bottom = -134.0
 rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Marca o local onde a luz
@@ -377,7 +380,6 @@ text = "Local da emissão"
 
 [node name="marcaI" type="Sprite" parent="Controle/Marcar"]
 position = Vector2( -14.8465, 12.8174 )
-scale = Vector2( 0.391511, 0.391511 )
 texture = ExtResource( 36 )
 
 [node name="SoundLogo" type="Sprite" parent="Controle"]
@@ -432,10 +434,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -576.0
+margin_left = -582.0
 margin_top = -56.0001
-margin_right = -496.0
-margin_bottom = -32.0001
+margin_right = -498.0
+margin_bottom = -30.0001
 rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Instala os emissores
 na Estação"
@@ -459,10 +461,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -576.0
+margin_left = -582.0
 margin_top = -88.0
-margin_right = -496.0
-margin_bottom = -64.0
+margin_right = -502.0
+margin_bottom = -62.0
 rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Instala os emissores
 no Trem"
@@ -471,15 +473,12 @@ custom_colors/font_color_hover = Color( 0.54902, 1, 0.662745, 1 )
 custom_colors/font_color_pressed = Color( 0.0901961, 0.898039, 0, 1 )
 custom_fonts/font = ExtResource( 47 )
 text = "Trem"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LuzAutomatca" type="CheckBox" parent="Controle"]
-margin_left = 64.0
+margin_left = 58.0
 margin_top = 560.0
-margin_right = 165.0
-margin_bottom = 584.0
+margin_right = 166.0
+margin_bottom = 586.0
 rect_scale = Vector2( 1.5, 1.5 )
 hint_tooltip = "Ativa o disparo de luz
 quando o Trem alinhar com a Estação"
@@ -492,9 +491,9 @@ text = "Automática"
 expand_icon = true
 
 [node name="btn01press" type="Sprite" parent="Controle/LuzAutomatca"]
-position = Vector2( -15.0062, 12.4059 )
+position = Vector2( -15.0062, 9.0726 )
 scale = Vector2( 0.523407, 0.479463 )
-texture = ExtResource( 11 )
+texture = ExtResource( 5 )
 
 [node name="LbData" type="Label" parent="Controle"]
 anchor_left = 1.0
@@ -532,6 +531,24 @@ stream = ExtResource( 37 )
 
 [node name="AzulFx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 38 )
+
+[node name="LbIniciar" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1281.0
+margin_top = 236.0
+margin_right = 1842.0
+margin_bottom = 357.0
+custom_fonts/font = SubResource( 5 )
+text = "INICIAR"
+script = ExtResource( 7 )
+
+[node name="Iniciar" type="AudioStreamPlayer" parent="LbIniciar"]
+stream = ExtResource( 19 )
+
+[node name="Riscar" parent="." instance=ExtResource( 48 )]
 
 [connection signal="area_entered" from="Trem/kinTrem" to="." method="_on_kinTrem_area_entered"]
 [connection signal="area_entered" from="Estacao/kinEstacao" to="." method="_on_kinEstacao_area_entered"]

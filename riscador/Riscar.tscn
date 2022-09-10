@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://riscador/Riscar.gd" type="Script" id=1]
+
+[node name="Riscar" type="Node2D"]
+pause_mode = 2
+z_index = 5
+script = ExtResource( 1 )

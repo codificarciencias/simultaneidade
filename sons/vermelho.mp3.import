@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vermelho.mp3-76352190c4d7dc72d2170187e1f17298.mp3str"
+
+[deps]
+
+source_file="res://sons/vermelho.mp3"
+dest_files=[ "res://.import/vermelho.mp3-76352190c4d7dc72d2170187e1f17298.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

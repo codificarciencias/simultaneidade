@@ -2,7 +2,7 @@ extends Label
 var som = true
 
 
-func _process(delta):
+func _process(_delta):
 	# efeito iniciar
 	
 		

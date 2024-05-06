@@ -5,7 +5,7 @@ var mover = false
 var luzVerm = preload("res://luzVerm.tscn")
 var luzAz = preload("res://luzAzul.tscn")
 var tremDirec = 'centro'
-
+var pausar = false
 
 #------------------------ Execução Inicial -------------------------------------
 
@@ -151,20 +151,33 @@ func _on_EmisTrem_pressed(): # posiciona os emissores no Trem
 
 
 func _on_kinTrem_area_entered(area): # Emite som ao colidir luzes e trem
-	if $Controle/SonTrem.pressed == true:
-		if area.name == 'ColVerm':
+	
+	if area.name == 'ColVerm':
+		_muda_Cor(2)
+		if $Controle/SonTrem.pressed == true:
+			$VermFX.pitch_scale = 0.5
 			$VermFX.play()
-		elif area.name == 'ColAzul':
+	elif area.name == 'ColAzul':
+		_muda_Cor(3)
+		if $Controle/SonTrem.pressed == true:
+			$AzulFx.pitch_scale = 1.2
 			$AzulFx.play()
 
 
 func _on_kinEstacao_area_entered(area): # Emite som ao colidir luzes e estacao
-	if $Controle/SonEstacao.pressed == true:
-		if area.name == 'ColVerm':
+	
+	
+	if area.name == 'ColVerm':
+		_muda_Cor(1)
+		if $Controle/SonEstacao.pressed == true:
+			$VermFX.pitch_scale = 1
 			$VermFX.play()
-		elif area.name == 'ColAzul':
+	elif area.name == 'ColAzul':
+		_muda_Cor(0)
+		if $Controle/SonEstacao.pressed == true:
+			$AzulFx.pitch_scale = 1
 			$AzulFx.play()
-
+	
 
 func _on_btTela_pressed(): # Modo tela cheia
 	if OS.window_fullscreen == true:
@@ -180,3 +193,32 @@ func _on_Wsite_pressed(): # Link para o site
 func _on_btReset_pressed(): # Reinicia a simulação
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_Cont_timeout():
+	$SpVizao.visible = false
+	$Trem/SpVizao2.visible = false
+	#pass
+
+
+func _muda_Cor(valor): # Ajusta a cor e exibe sinal de vizualização
+	if valor == 1: # Vizão vermelha estação
+		$SpVizao.modulate = Color(1, 0.7, 0.7, 1)
+		$SpVizao.visible = true
+		$Cont.start()
+		
+	elif valor == 0: # Vizão Azul estação
+		$SpVizao.modulate = Color(0.5, 1, 1, 1)
+		$SpVizao.visible = true
+		$Cont.start()
+		
+	elif valor == 2: # Vizão vermelha trem
+		$Trem/SpVizao2.modulate = Color(1, 0.7, 0.7, 1)
+		$Trem/SpVizao2.visible = true
+		$Cont.start()
+	
+	elif valor == 3:  # Vizão azul trem
+		$Trem/SpVizao2.modulate = Color(0.5, 1, 1, 1)
+		$Trem/SpVizao2.visible = true
+		$Cont.start()
+

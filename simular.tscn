@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://images/Trilho.jpg" type="Texture" id=1]
 [ext_resource path="res://images/Trem.png" type="Texture" id=2]
@@ -48,6 +48,12 @@
 [ext_resource path="res://conthrax-sb.ttf" type="DynamicFontData" id=46]
 [ext_resource path="res://arial.tres" type="DynamicFont" id=47]
 [ext_resource path="res://riscador/Riscar.tscn" type="PackedScene" id=48]
+[ext_resource path="res://images/vizao.png" type="Texture" id=49]
+[ext_resource path="res://Controle.gd" type="Script" id=50]
+[ext_resource path="res://images/info.png" type="Texture" id=51]
+[ext_resource path="res://images/infoOn.png" type="Texture" id=52]
+[ext_resource path="res://images/infoPress.png" type="Texture" id=53]
+[ext_resource path="res://images/informe.png" type="Texture" id=54]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -97,6 +103,14 @@ region_rect = Rect2( 0, 0, 1280, 125 )
 position = Vector2( 651, 260.651 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
+
+[node name="SpVizao2" type="Sprite" parent="Trem"]
+visible = false
+modulate = Color( 0.470588, 1, 1, 1 )
+position = Vector2( -18.3334, -36.085 )
+scale = Vector2( 2.63542, 2.63542 )
+z_index = 1
+texture = ExtResource( 49 )
 
 [node name="posVerm" type="Position2D" parent="Trem"]
 position = Vector2( 414, 85 )
@@ -151,6 +165,8 @@ position = Vector2( 0, 4.94617 )
 shape = SubResource( 2 )
 
 [node name="Controle" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 50 )
 
 [node name="PanControle" type="Sprite" parent="Controle"]
 position = Vector2( 639.627, 624 )
@@ -184,9 +200,6 @@ min_value = 1.0
 value = 30.0
 align = 1
 suffix = "% C"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Controle/VelTrem"]
 anchor_left = 0.5
@@ -213,9 +226,6 @@ margin_bottom = -104.0
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="btCentro" type="TextureButton" parent="Controle/btLenta"]
 anchor_left = 0.5
@@ -359,6 +369,23 @@ texture_hover = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="btInfo" type="TextureButton" parent="Controle"]
+margin_left = 133.0
+margin_top = 14.0
+margin_right = 183.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 52 )
+expand = true
+
+[node name="spInform" type="Sprite" parent="Controle/btInfo"]
+visible = false
+position = Vector2( -116, 62 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 54 )
+centered = false
 
 [node name="Marcar" type="CheckBox" parent="Controle"]
 anchor_left = 0.5
@@ -550,6 +577,15 @@ stream = ExtResource( 19 )
 
 [node name="Riscar" parent="." instance=ExtResource( 48 )]
 
+[node name="SpVizao" type="Sprite" parent="."]
+visible = false
+position = Vector2( 642, 396 )
+scale = Vector2( 1.4375, 1.4375 )
+texture = ExtResource( 49 )
+
+[node name="Cont" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="area_entered" from="Trem/kinTrem" to="." method="_on_kinTrem_area_entered"]
 [connection signal="area_entered" from="Estacao/kinEstacao" to="." method="_on_kinEstacao_area_entered"]
 [connection signal="button_down" from="Controle/btLenta" to="." method="_on_btLenta_button_down"]
@@ -564,5 +600,8 @@ stream = ExtResource( 19 )
 [connection signal="pressed" from="Controle/btTela" to="." method="_on_btTela_pressed"]
 [connection signal="pressed" from="Controle/btReset" to="." method="_on_btReset_pressed"]
 [connection signal="pressed" from="Controle/btPause" to="." method="_on_btPause_pressed"]
+[connection signal="button_down" from="Controle/btInfo" to="Controle" method="_on_btInfo_button_down"]
+[connection signal="button_up" from="Controle/btInfo" to="Controle" method="_on_btInfo_button_up"]
 [connection signal="pressed" from="Controle/EmisEStacao" to="." method="_on_EmisEStacao_pressed"]
 [connection signal="pressed" from="Controle/EmisTrem" to="." method="_on_EmisTrem_pressed"]
+[connection signal="timeout" from="Cont" to="." method="_on_Cont_timeout"]

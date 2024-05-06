@@ -25,7 +25,7 @@ func _ready():
 
 
 # ciclo de quadros por segundo (FPS) ===========================================
-func _process(delta):
+func _process(_delta):
 
 # Eventos do riscador
 
